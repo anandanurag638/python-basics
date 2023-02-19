@@ -8,5 +8,9 @@ mybio = {
 }
 mybio.update({"weight": "seventy six kilograms",
               "class": "bachlor in arts",
-              "section": "e"})
+              })
 print(mybio)
+
+
+name = input("sarah")
+print("Hello",  input())
