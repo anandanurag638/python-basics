@@ -11,14 +11,9 @@ list-test [9, 49, 05, 94, 84, 81]
 9. Remove(pop) elements from a dictionary
 10. Print all keys and values of a dictionary
 11. Find the value for a given key in the dictionary
-12.  Remove first n characters from a string
+12. Remove first n characters from a string
       ///////////// ON DATE 18/02/2023 ///////////////
 
-13. Create a Python program that prompts the user to enter their name and age, and then prints out a greeting message and their age in 10 years.
-14. Write a program that takes in a list of numbers as input and computes their sum and average.
-15. Create a program that generates a random number between 1 and 100, and prompts the user to guess the number. The program should provide feedback to the user indicating whether their guess was too high or too low until they correctly guess the number.
-16. Write a program that reads in a text file and counts the number of occurrences of each word in the file. The program should print out a list of the most frequently occurring words and their counts.
-17. Create a program that takes in a user's input and checks if it is a palindrome (a word, phrase, or sequence of characters that reads the same backward as forward).
-18. Write a program that generates a multiplication table for the numbers 1 through 10.
-19. Create a program that takes in a user's input and checks if it is a valid email address.
-21.# write a code where ask user to input their daily wage and then how much they will earn in a month
+13. write a code where it prompts user  their daily wage and then print out how much they will earn in a month.
+14. Create a program that prompts the user to enter their name and age, and then prints out a greeting message and their age in 10 years.
+15. 
