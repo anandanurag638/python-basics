@@ -16,4 +16,4 @@ list-test [9, 49, 05, 94, 84, 81]
 
 13. write a code where it prompts user  their daily wage and then print out how much they will earn in a month.
 14. Create a program that prompts the user to enter their name and age, and then prints out a greeting message and their age in 10 years.
-15. 
+15. generating a random number from 1 to 100.
