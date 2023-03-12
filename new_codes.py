@@ -1,17 +1,17 @@
-# import random
-#
-# # Generate a random number between 1 and 100
-# number = random.randint(1, 100)
-#
-# # Print the number
-# print("The random number is:", number)
-#
-# # write a code to add numbers 1 to 100
-#
-# sum  = 0
-# for i in range(1, 101):
-#     sum += i
-# print("The sum of all numbers from 1 to 100 is:", sum)
+import random
+
+# Generate a random number between 1 and 100
+number = random.randint(1, 100)
+
+# Print the number
+print("The random number is:", number)
+
+# write a code to add numbers 1 to 100
+
+sum = 0
+for i in range(1, 101):
+    sum += i
+print("The sum of all numbers from 1 to 100 is:", sum)
 # making a CHATBOT like chatGPT
 print("Hello! I am elon musk . How can I help you today?")
 while True:
@@ -26,4 +26,12 @@ while True:
         print("myself: Goodbye! Have a nice day!")
         break
     else:
-        print("myself: Sorry, I didn't got that.")
+        print("myself: Sorry, I didn't get that.")
+# make a function which takes words and tell their length
+words = input("Enter words separated by spaces: ")
+word_list = words.split()
+word_lengths = [len(word) for word in word_list]
+
+print("Lengths of the words:")
+for i, length in enumerate(word_lengths):
+    print(f"Word {i + 1}: {length}")
