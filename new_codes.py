@@ -36,7 +36,13 @@
 # for i, length in enumerate(word_lengths):
 #     print(f"Word {i + 1}: {length}")
 
+#
+# numbers = [2, 3, 54, 76, 342, 675, 0, -43, -534342,  234, 980, ]
+# numbers.sort()
+# print(numbers)
 
-numbers = [2, 3, 54, 76, 342, 675, 0, -43, -534342,  234, 980, ]
-numbers.sort()
-print(numbers)
+
+number1 = float(input("first number: "))
+number2 = float(input("second number: "))
+result = number1 + number2
+print(result)
