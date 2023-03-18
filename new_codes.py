@@ -41,8 +41,53 @@
 # numbers.sort()
 # print(numbers)
 
+#
+# number1 = float(input("first number: "))
+# number2 = float(input("second number: "))
+# result = number1 + number2
+# print(result)
 
-number1 = float(input("first number: "))
-number2 = float(input("second number: "))
-result = number1 + number2
-print(result)
+#
+# num1 = float(input("Enter first number: "))
+# num2 = float(input("Enter second number: "))
+# o = input("enter the operation you want(a, b, c, division): ")
+# a = num1 + num2
+# b = num1 - num2
+# c = num1 * num2
+# division = num1 % num2
+# if o : a
+# print(a)
+# elif  o == b
+# print(b)
+# elif o== c
+# print(c)
+# elif o == division
+# print(division)
+# else print("sorry")
+# subtraction = num1 - num2
+# multiplication = num1 * num2
+# division = num1 / num2
+# print("The sum of", num1, "and", num2, "is", sum)
+# print("The difference between", num1, "and", num2, "is", difference)
+# print("The product of", num1, "and", num2, "is", product)
+# print("The quotient of", num1, "and", num2, "is", quotient)
+
+num1 = float(input("Enter the first number: "))
+num2 = float(input("Enter the second number: "))
+operation = input("Enter the operation (+, -, *, /): ")
+if operation == "+":
+    result = num1 + num2
+elif operation == "-":
+    result = num1 - num2
+elif operation == "*":
+    result = num1 * num2
+elif operation == "/":
+    result = num1 / num2
+else:
+    print("Invalid operation!")
+    result = None
+
+# Print the result if it was calculated
+if result is not None:
+    print(f"Result: {result}")
+
