@@ -86,8 +86,6 @@ elif operation == "/":
 else:
     print("Invalid operation!")
     result = None
-
-# Print the result if it was calculated
 if result is not None:
     print(f"Result: {result}")
 
