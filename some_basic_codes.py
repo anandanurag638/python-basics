@@ -17,7 +17,7 @@
 
 # write a code to add from 1 to 100
 # This program calculates the sum of all numbers from 1 to 100
-sum = 0
-for i in range(1, 101):
-    sum += i
-print("The sum of all numbers from 1 to 100 is:", sum)
+# sum = 0
+# for i in range(1, 101):
+#     sum += i
+# print("The sum of all numbers from 1 to 100 is:", sum)
