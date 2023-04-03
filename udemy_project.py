@@ -51,3 +51,51 @@ i = 1
 while i <= 10:
     print(i)
     i = i + 5
+
+
+# writing a function  for a condition which returns the lesser of two given numbers if both numbers are even,
+# but returns the greater if one or both numbers are odd
+
+def even_and_odd(a, c):
+    if a % 2 == 0 and c % 2 == 0:
+        print(min(a, c))
+    else:
+        print(max(a, c))
+
+# Write a function takes a two-word string and returns True if both words begin with same lette
+
+
+def string_problem(text):
+    a = text.split(text)
+    if a[0] == a[1]:
+        return True
+    else:
+        return False
+
+
+# making a function that if Given two integers, return True if the sum of the integers is 20 or if one of the
+# integers is 20. If not, return False
+
+def integers_problem(a, b):
+    return a + b == 20 or a == 20 or b == 20:
+
+
+ # Write a function that capitalizes the first and fourth letters of a name
+
+
+def capitalize_name(name):
+    if len(name) >= 4:
+        capitalized_name = name[0].upper() + name[1:3] + name[3].upper() + name[4:]
+    else:
+        capitalized_name = "try something other name instead"
+    print(capitalized_name)
+
+
+# Given a sentence, return a sentence with the words reversed
+
+
+def master_yoda(text):
+    print(" ".join(text.split()[::-1]))
+
+
+master_yoda(text="i will die tomorrow")
