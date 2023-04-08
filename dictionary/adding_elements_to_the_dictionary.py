@@ -12,5 +12,5 @@ mybio.update({"weight": "seventy six kilograms",
 print(mybio)
 
 
-name = input("sarah")
+name = input("Enter the name")
 print("Hello",  input())
