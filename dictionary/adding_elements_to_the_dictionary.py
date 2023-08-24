@@ -7,7 +7,7 @@ mybio = {
     "likes": "food"
 }
 mybio.update({"weight": "seventy six kilograms",
-              "class": "bachlor in arts",
+              "class": "bachlor in Computer application",
               })
 print(mybio)
 
