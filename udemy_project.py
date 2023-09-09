@@ -77,10 +77,10 @@ def string_problem(text):
 # integers is 20. If not, return False
 
 def integers_problem(a, b):
-    return a + b == 20 or a == 20 or b == 20:
+    return a + b == 20 or a == 20 or b == 20
 
 
- # Write a function that capitalizes the first and fourth letters of a name
+# Write a function that capitalizes the first and fourth letters of a name
 
 
 def capitalize_name(name):
