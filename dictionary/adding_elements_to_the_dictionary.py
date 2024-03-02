@@ -14,3 +14,4 @@ print(mybio)
 
 name = input("Enter the name")
 print("Hello",  input())
+print("hi")
