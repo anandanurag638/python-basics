@@ -1,45 +1,39 @@
-# Simple Command-Line To-Do List App (Non-Interactive Mode for Sandbox)
+import requests
+from plyer import notification
 
-tasks = []
+# Function to fetch weather data
+def get_weather(api_key, city):
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print("Failed to fetch weather data")
+        return None
 
-def add_task(task):
-    if task.strip():
-        tasks.append(task)
-        return f"Task added: {task}"
-    return "Task cannot be empty!"
+# Function to check for bad weather and send notification
+def notify_bad_weather(weather_data):
+    if weather_data:
+        weather_condition = weather_data['weather'][0]['main']
+        temperature = weather_data['main']['temp']
 
-def remove_task(index):
-    if 0 <= index < len(tasks):
-        removed = tasks.pop(index)
-        return f"Removed task: {removed}"
-    return "Invalid task number!"
+        # Define bad weather conditions
+        bad_weather_conditions = ['Rain', 'Snow', 'Thunderstorm', 'Drizzle']
 
-def clear_tasks():
-    tasks.clear()
-    return "All tasks cleared!"
+        if weather_condition in bad_weather_conditions or temperature < 0:
+            notification.notify(
+                title="Bad Weather Alert!",
+                message=f"Condition: {weather_condition}, Temp: {temperature}°C. Stay safe!",
+                timeout=10  # Notification duration in seconds
+            )
+        else:
+            print("Weather is fine. No notification sent.")
 
-def list_tasks():
-    if tasks:
-        return "\n".join([f"{i+1}. {task}" for i, task in enumerate(tasks)])
-    return "Your to-do list is empty!"
-
-def execute_command(command, arg=None):
-    commands = {
-        "add": lambda: add_task(arg) if arg else "Task content required!",
-        "remove": lambda: remove_task(int(arg) - 1) if arg and arg.isdigit() else "Valid task number required!",
-        "list": list_tasks,
-        "clear": clear_tasks,
-        "exit": lambda: "Exiting the to-do list app. Goodbye!"
-    }
-    return commands.get(command, lambda: "Invalid command!")()
-
-# Example Usage (Replace with function calls in a real-world app):
+# Main function
 if __name__ == "__main__":
-    print(execute_command("add", "Buy groceries"))
-    print(execute_command("add", "Complete homework"))
-    print(execute_command("list"))
-    print(execute_command("remove", "1"))
-    print(execute_command("list"))
-    print(execute_command("clear"))
-    print(execute_command("list"))
-    print(execute_command("exit"))
+    API_KEY = "791adbb882b2c07d2bca054b8f1c4055"
+  # Replace with your OpenWeatherMap API key
+    CITY = "noida"  # Replace with your city name
+
+    weather_data = get_weather(API_KEY, CITY)
+    notify_bad_weather(weather_data)
