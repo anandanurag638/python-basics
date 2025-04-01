@@ -1,39 +1,50 @@
+import argparse
 import requests
+from bs4 import BeautifulSoup
 from plyer import notification
+import schedule
+import time
 
-# Function to fetch weather data
-def get_weather(api_key, city):
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
-    response = requests.get(url)
+def fetch_class_schedule(url):
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+    
+    response = requests.get(url, headers=headers)
+    
     if response.status_code == 200:
-        return response.json()
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        classes = soup.find_all("div", class_="class-schedule")  # Update based on actual HTML
+        class_info = [f"Class {cls.text.strip()}" for cls in classes]
+
+        return class_info if class_info else ["No classes found."]
     else:
-        print("Failed to fetch weather data")
-        return None
+        return [f"Error {response.status_code}: Unable to fetch data"]
 
-# Function to check for bad weather and send notification
-def notify_bad_weather(weather_data):
-    if weather_data:
-        weather_condition = weather_data['weather'][0]['main']
-        temperature = weather_data['main']['temp']
+def send_notification(url):
+    schedule_data = fetch_class_schedule(url)
+    message = "\n".join(schedule_data)
+    
+    notification.notify(
+        title="Class Schedule Notification",
+        message=message,
+        timeout=10
+    )
 
-        # Define bad weather conditions
-        bad_weather_conditions = ['Rain', 'Snow', 'Thunderstorm', 'Drizzle']
+def start_scheduler(url, interval):
+    schedule.every(interval).minutes.do(send_notification, url)
+    
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
-        if weather_condition in bad_weather_conditions or temperature < 0:
-            notification.notify(
-                title="Bad Weather Alert!",
-                message=f"Condition: {weather_condition}, Temp: {temperature}°C. Stay safe!",
-                timeout=10  # Notification duration in seconds
-            )
-        else:
-            print("Weather is fine. No notification sent.")
-
-# Main function
 if __name__ == "__main__":
-    API_KEY = "791adbb882b2c07d2bca054b8f1c4055"
-  # Replace with your OpenWeatherMap API key
-    CITY = "noida"  # Replace with your city name
-
-    weather_data = get_weather(API_KEY, CITY)
-    notify_bad_weather(weather_data)
+    parser = argparse.ArgumentParser(description="Class Schedule Notifier")
+    parser.add_argument("--url", type=str, required=True, help="Website URL")
+    parser.add_argument("--interval", type=int, default=30, help="Notification Interval (minutes)")
+    
+    args = parser.parse_args()
+    
+    print(f"Fetching data from {args.url} every {args.interval} minutes")
+    start_scheduler(args.url, args.interval)
